@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-THEME=powerlevel10k/powerlevel10k
+THEME=agnoster
 PLUGINS=""
 
 while getopts ":t:p:" opt; do
@@ -77,9 +77,9 @@ zshrc_template() {
     _PLUGINS=$*;
 
     cat <<EOM
-export LANG='en_US.UTF-8'
-export LANGUAGE='en_US:en'
-export LC_ALL='en_US.UTF-8'
+export LANG='fr_FR.UTF-8'
+export LANGUAGE='fr_FR:fr'
+export LC_ALL='fr_FR.UTF-8'
 export TERM=xterm
 
 ##### Zsh/Oh-my-Zsh Configuration
@@ -92,16 +92,6 @@ source \$ZSH/oh-my-zsh.sh
 
 bindkey "\$terminfo[kcuu1]" history-substring-search-up
 bindkey "\$terminfo[kcud1]" history-substring-search-down
-EOM
-}
-
-powerline10k_config() {
-    cat <<EOM
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_STATUS_OK=false
-POWERLEVEL9K_STATUS_CROSS=true
 EOM
 }
 
@@ -125,8 +115,3 @@ for plugin in $PLUGINS; do
 done
 
 zshrc_template "$HOME" "$THEME" "$plugin_list" > $HOME/.zshrc
-
-if [ "$THEME" = "powerlevel10k/powerlevel10k" ]; then
-    git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-    powerline10k_config >> $HOME/.zshrc
-fi
