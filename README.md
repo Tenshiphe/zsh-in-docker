@@ -12,7 +12,7 @@ One line installation: add the following line in your `Dockerfile`:
 
 ```Dockerfile
 # Default agnoster theme, no plugins installed
-RUN sh -c "$(wget -O- https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)"
+RUN sh -c "$(curl https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)"
 ```
 
 #### Optional arguments:
@@ -28,19 +28,19 @@ RUN sh -c "$(wget -O- https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/
 
 ```Dockerfile
 # Uses "robbyrussell" theme (original Oh My Zsh theme), with no plugins
-RUN sh -c "$(wget -O- https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)" -- \
+RUN sh -c "$(curl https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)" -- \
     -t robbyrussell
 ```
 
 ```Dockerfile
 # Uses "git" and "ssh-agent" bundled plugins
-RUN sh -c "$(wget -O- https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)" -- \
+RUN sh -c "$(curl https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)" -- \
     -p git -p ssh-agent
 ```
 
 ```Dockerfile
 # Uses "ys" theme, uses some bundled plugins and install some more from github
-RUN sh -c "$(wget -O- https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)" -- \
+RUN sh -c "$(curl https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/master/zsh-in-docker.sh)" -- \
     -t ys \
     -p git \
     -p ssh-agent \
@@ -50,12 +50,12 @@ RUN sh -c "$(wget -O- https://raw.githubusercontent.com/tenshiphe/zsh-in-docker/
 
 ## Notes
 
-- The examples above use `wget`, but if you prefer `curl`, just replace `wget -O-` with `curl`
+- The examples above use `curl`, but if you prefer `wget`, just replace `curl` with `wget -O-`
 - This scripts requires `git` and `curl` to work properly. If your `Dockerfile` uses `root` as the
   main user, it should be fine, as the script will install them automatically. If you are using a
   non-root user, make sure to install the `sudo` package _OR_ to install `git` and `curl` packages
   _before_ calling this script
-- By default this script install the `agnoster` theme. If you want the default Oh My Zsh theme, uses the option
+- By default this script install the `powerlevel10k` theme. If you want the default Oh My Zsh theme, uses the option
   `-t robbyrussell`
 
 ## Source
