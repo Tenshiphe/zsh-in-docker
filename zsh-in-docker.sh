@@ -67,7 +67,7 @@ install_dependencies() {
         *)
             $Sudo apt-get update
             $Sudo apt-get -y install git curl zsh locales locales-all
-            $Sudo locale-gen en_US.UTF-8
+            $Sudo locale-gen fr_FR.UTF-8
     esac
 }
 
